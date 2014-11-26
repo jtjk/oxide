@@ -44,7 +44,7 @@ export default Base.extend({
 
                 nitrogenEmberUtils.findOrCreateUser(store, session, principal)
                 .then(function (storedUser) {
-                    return nitrogenEmberUtils.updateOrCreateDevices(store, session, storedUser)
+                    return nitrogenEmberUtils.updateOrCreateDevices(store, session, storedUser);
                 }).then(function () {
                     console.log('Resolving Login');
                     resolve({ user: principal, accessToken: session.accessToken });
@@ -79,7 +79,7 @@ export default Base.extend({
 
                     nitrogenEmberUtils.findOrCreateUser(store, session, principal)
                     .then(function (storedUser) {
-                        return nitrogenEmberUtils.updateOrCreateDevices(store, session, storedUser)
+                        return nitrogenEmberUtils.updateOrCreateDevices(store, session, storedUser);
                     }).then(function () {
                         console.log('Resolving Login');
                         resolve({ user: principal, accessToken: session.accessToken });

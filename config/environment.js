@@ -42,7 +42,7 @@ module.exports = function (environment) {
         // Run the cordova emulate command after the build is finished
         //
         // default: false
-        emulate: true,
+        emulate: false,
 
         // Which platform to build and/or emulate
         //

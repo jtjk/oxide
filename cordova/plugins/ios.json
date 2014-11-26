@@ -6,6 +6,10 @@
     "config_munge": {
         "files": {}
     },
-    "installed_plugins": {},
+    "installed_plugins": {
+        "org.allseen.alljoyn": {
+            "PACKAGE_NAME": "io.nitrogen"
+        }
+    },
     "dependent_plugins": {}
 }
