@@ -14,7 +14,7 @@ var nitrogenEmberUtils = {
             user.set('nickname', principal.nickname);
             user.set('password', session.principal.password);
             user.set('updated_at', principal.updated_at);
-            
+
             user.save().then(function (result) {
                 resolve(result);
             });
@@ -33,20 +33,6 @@ var nitrogenEmberUtils = {
         foundDevice.set('created_at', device.created_at);
         foundDevice.set('owner', owner);
 
-        // Once we have a Nitrogen Tags API, we can introduce this.
-        // if (device.tags.length > 0) {
-        //     tagLookup = device.tags.map(function (tag) {
-        //         return self.lookupTag(tag);
-        //     });
-
-        //     Ember.RSVP.all(tagLookup).then(function (tags) {
-        //         foundDevice.set('tags', tags);
-        //         return foundDevice.save();
-        //     })
-        // } else {
-        //     return foundDevice.save();
-        // }
-
         return foundDevice.save();
     },
 
@@ -64,22 +50,6 @@ var nitrogenEmberUtils = {
             updated_at: device.updated_at,
             owner: owner
         });
-
-
-
-        // Once we have a Nitrogen Tags API, we can introduce this.
-        // if (device.tags.length > 0) {
-        //     tagLookup = device.tags.map(function (tag) {
-        //         return self.lookupTag(tag);
-        //     });
-
-        //     Ember.RSVP.all(tagLookup).then(function (tags) {
-        //         newDevice.set('tags', tags);
-        //         return newDevice.save();
-        //     })
-        // } else {
-        //     return newDevice.save();
-        // }
 
         return newDevice.save();
     },

@@ -48,8 +48,6 @@ export default Base.extend({
                 }).then(function () {
                     console.log('Resolving Login');
                     resolve({ user: principal, accessToken: session.accessToken });
-                }).catch(function (error) {
-                    console.log(error);
                 });
             });
         });
@@ -83,8 +81,6 @@ export default Base.extend({
                     }).then(function () {
                         console.log('Resolving Login');
                         resolve({ user: principal, accessToken: session.accessToken });
-                    }).catch(function (error) {
-                        console.log(error);
                     });
                 });
             });

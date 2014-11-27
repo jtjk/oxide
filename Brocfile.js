@@ -32,6 +32,8 @@ app.import('bower_components/flat-ui/dist/fonts/glyphicons/flat-ui-icons-regular
 
 app.import('bower_components/flat-ui/dist/fonts/lato/lato-regular.woff', { destDir: 'fonts/lato' });
 app.import('bower_components/flat-ui/dist/fonts/lato/lato-regular.ttf', { destDir: 'fonts/lato' });
+app.import('bower_components/flat-ui/dist/fonts/lato/lato-bold.woff', { destDir: 'fonts/lato' });
+app.import('bower_components/flat-ui/dist/fonts/lato/lato-bold.ttf', { destDir: 'fonts/lato' });
 
 app.import('bower_components/moment/min/moment-with-locales.js');
 app.import('bower_components/rangeslider.js/dist/rangeslider.min.js');
@@ -39,5 +41,6 @@ app.import('bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js');
 app.import('bower_components/bootstrap-select/dist/css/bootstrap-select.min.css');
 app.import('bower_components/bootstrap-select/dist/js/bootstrap-select.js');
 app.import('bower_components/JavaScript-MD5/js/md5.js');
+app.import('bower_components/jquery-touchswipe/jquery.touchSwipe.min.js');
 
 module.exports = app.toTree();
