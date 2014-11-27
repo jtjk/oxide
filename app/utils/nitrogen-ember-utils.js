@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 var nitrogenEmberUtils = {
     findOrCreateUser: function (store, session, principal) {
-        return new Ember.RSVP.Promise(function (resolve) {;
+        return new Ember.RSVP.Promise(function (resolve) {
             var user = store.createRecord('user', {id: 'me'});
             user.set('name', principal.name);
             user.set('email', principal.email);
@@ -17,7 +17,7 @@ var nitrogenEmberUtils = {
             
             user.save().then(function (result) {
                 resolve(result);
-            })
+            });
         });
     },
 

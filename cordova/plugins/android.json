@@ -9,8 +9,8 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"AllJoyn\"><param name=\"android-package\" value=\"org.allseen.alljoyn.AllJoyn\" /></feature>",
-                            "count": 1
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" onload=\"true\" value=\"org.apache.cordova.statusbar.StatusBar\" /></feature>",
+                            "count": 2
                         }
                     ]
                 }
@@ -19,6 +19,9 @@
     },
     "installed_plugins": {
         "org.allseen.alljoyn": {
+            "PACKAGE_NAME": "io.nitrogen"
+        },
+        "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "io.nitrogen"
         }
     },
