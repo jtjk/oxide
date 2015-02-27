@@ -3,9 +3,9 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('controller:location', 'LocationController', {
+moduleFor('controller:nitrogen', 'NitrogenController', {
   // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: ['controller:application']
 });
 
 // Replace this with your real tests.
