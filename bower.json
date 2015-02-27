@@ -25,5 +25,8 @@
     "jquery-touchswipe": "~1.6.6",
     "underscore": "~1.7.0",
     "pretender": "0.1.0"
+  },
+  "resolutions": {
+    "handlebars": "~2.0.0"
   }
 }
