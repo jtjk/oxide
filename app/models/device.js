@@ -16,7 +16,6 @@ var Device = DS.Model.extend({
                 }
             }
         }
-        console.log('Device Type: ' + dt);
         return dt;
     }.property('tags'),
 
