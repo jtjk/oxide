@@ -1,6 +1,23 @@
 import DS from 'ember-data';
 
 var Device = DS.Model.extend({
+    
+    deviceType: function () {
+        var dt = 'defaultdevice';
+        var tags = this.get('tags');
+        for (var tag in tags) {
+            if (tags.hasOwnProperty(tag)) {
+                console.log('T: ' + tag + ' V: ' + tags[tag]);
+                var tsplit = tags[tag].split(':');
+                if (tsplit[0] === 'type') {
+                    dt = tsplit[1];
+                }
+            }
+        }
+        console.log('Device Type: ' + dt);
+        return dt;
+    }.property('tags'),
+
     nitrogen_id: DS.attr('string'),
     name: DS.attr('string'),
     status: DS.attr('boolean', {defaultValue: false}),
@@ -15,7 +32,7 @@ var Device = DS.Model.extend({
     location: DS.attr(),
 
     // Relations
-    owner: DS.belongsTo('user', {async: true})
+    owner: DS.belongsTo('user', {async: true}),
 });
 
 export default Device;
