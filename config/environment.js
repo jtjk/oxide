@@ -38,6 +38,8 @@ module.exports = function (environment) {
         rebuildOnChange: true,
 
         // Run the cordova emulate command after the build is finished
+        //
+        // default: false
         emulate: false,
 
         // Which platform to build and/or emulate
