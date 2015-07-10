@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
     model: function (params) {
-        return this.store.find('device', params.device_id);
+        var querystr = '{"_id": "' + params._id + '"}';
+        return this.store.find('principal', {q: querystr});
     }
 });

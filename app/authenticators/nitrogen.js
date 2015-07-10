@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import Base from 'simple-auth/authenticators/base';
 import Config from '../config/environment';
-import nitrogenEmberUtils from '../utils/nitrogen-ember-utils';
 
 /**
 Nitrogen Authenticator.
@@ -12,7 +11,10 @@ Nitrogen Authenticator.
 */
 var nitrogenService = null;
 
-export default Base.extend({
+var Nitrogen = Base.extend({
+    store: null,
+    session: null,
+    principal: null,
     init: function () {
         nitrogenService = new nitrogen.Service(Config.APP.nitrogen);
     },
@@ -33,24 +35,21 @@ export default Base.extend({
                 id: data.user.id,
                 nickname: data.user.nickname
             });
-
             nitrogenService.resume(principal, function (err, session, principal) {
                 var store;
 
                 if (err) { return reject(err); }
                 store = self.container.lookup('store:main');
+                var appController = self.container.lookup('controller:application');
 
-                nitrogenEmberUtils.findOrCreateUser(store, session, principal)
-                .then(function (storedUser) {
-                    return nitrogenEmberUtils.updateOrCreateDevices(store, session, storedUser);
-                }).then(function () {
-                    var appController = self.container.lookup('controller:application');
+                appController.set('nitrogenSession', session);
+                appController.set('nitrogenService', nitrogenService);
+                appController.set('user', principal);
 
-                    console.log('Resolving Login', session);
-                    appController.set('nitrogenSession', session);
-                    appController.set('nitrogenService', nitrogenService);
-                    resolve({ user: principal, accessToken: session.accessToken });
-                });
+                console.log('Resolving Login', session);
+
+                resolve({ user: principal, accessToken: session.accessToken });
+                return;
             });
         });
     },
@@ -69,25 +68,19 @@ export default Base.extend({
                 email: credentials.identification,
                 password: credentials.password
             });
-
             Ember.run(function () {
                 nitrogenService.authenticate(user, function (err, session, principal) {
                     var store;
 
                     if (err) { return reject(JSON.parse(err)); }
                     store = self.container.lookup('store:main');
-
-                    nitrogenEmberUtils.findOrCreateUser(store, session, principal)
-                    .then(function (storedUser) {
-                        return nitrogenEmberUtils.updateOrCreateDevices(store, session, storedUser);
-                    }).then(function () {
-                        var appController = self.container.lookup('controller:application');
-
-                        console.log('Resolving Login', session);
-                        appController.set('nitrogenSession', session);
-                        appController.set('nitrogenService', nitrogenService);
-                        resolve({ user: principal, accessToken: session.accessToken });
-                    });
+                    console.log('Resolving Login', session,principal);
+                    var appController = self.container.lookup('controller:application');        
+                    appController.set('nitrogenSession', session);
+                    appController.set('nitrogenService', nitrogenService);
+                    appController.set('user', principal);
+                    resolve({ user: principal, accessToken: session.accessToken });
+                    return;
                 });
             });
         });
@@ -107,3 +100,7 @@ export default Base.extend({
         });
     }
 });
+
+export default Nitrogen;
+
+

@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-var Device = DS.Model.extend({
+var Principal = DS.Model.extend({
 
     deviceType: function () {
         var dt = 'defaultdevice',
@@ -36,4 +36,4 @@ var Device = DS.Model.extend({
     owner: DS.belongsTo('user', {async: true})
 });
 
-export default Device;
+export default Principal;

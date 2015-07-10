@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function () {
     this.resource('dashboard', {path: '/'});
 
-    this.resource('device', {path: 'device/:device_id'});
+    this.resource('device', {path: 'device/:_id'});
     this.resource('user', {path: 'users/:user_id'});
     this.resource('location', {path: 'location/:location_id'});
 

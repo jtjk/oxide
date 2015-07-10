@@ -21,7 +21,7 @@ var User = DS.Model.extend({
     updated_at: DS.attr('string'),
 
     // Relations
-    devices: DS.hasMany('device', {async: true})
+    principals: DS.hasMany('principal', {async: true})
 });
 
 export default User;

@@ -44,8 +44,8 @@ export default Ember.Controller.extend({
             }, function (message) {
                 console.log('Message Received. New Location:', message.body);
 
-                self.store.find('device', {
-                        nitrogen_id: message.from
+                self.store.find('principal', {
+                        id: message.from
                     })
                     .then(function (foundDevices) {
                         var foundDevice;
@@ -82,8 +82,8 @@ export default Ember.Controller.extend({
                         }
 
                         if (locations.length > 0) {
-                            self.store.find('device', {
-                                nitrogen_id: principalId
+                            self.store.find('principal', {
+                                id: principalId
                             }).then(function (foundDevices) {
                                 var foundDevice;
 
